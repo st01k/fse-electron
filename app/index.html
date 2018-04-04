@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>FSE</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script defer src="./assets/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="./assets/main.css">
+</head>
+
+<body>
+    <nav id='top-navbar' class="navbar navbar-expand-lg fixed-top">
+        <a class="nav-link" href="https://github.com/st01k/fse" target="_blank">
+            <i class="fab fa-github fa-2x"></i>
+        </a>
+
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="navbar-brand">File System Explorer</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Docs</a>
+                </li>
+            </ul>
+            <input type="checkbox" id="toggle-hidden" data-onstyle="success">
+            <input type="checkbox" id="toggle-debug" data-onstyle="primary">
+        </div>
+    </nav>
+
+    <div id="wrapper">
+        <div id="content-section" class="col-md-11 gradient">
+            <ul id="show-items" class="list-inline"></ul>
+        </div>
+
+        <div id="toolbar" class="col-md-1">
+            <div id="btn-wrapper">
+                <button id="home" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-home fa-2x"></i>
+                </button>
+                <button id="back" type="button" class="btn btn-block btn-outline-secondary">
+                    <i class="fas fa-chevron-left fa-2x"></i>
+                </button>
+                <button id="up" type="button" class="btn btn-block btn-outline-secondary">
+                    <i class="fas fa-chevron-up fa-2x"></i>
+                </button>
+                <button id="refresh" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-sync-alt fa-2x"></i>
+                </button>
+                <button id="upload" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-upload fa-2x"></i>
+                </button>
+                <button id="download" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-download fa-2x"></i>
+                </button>
+                <button id="edit" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="far fa-edit fa-2x"></i>
+                </button>
+                <button id="copy" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="far fa-copy fa-2x"></i>
+                </button>
+                <button id="paste" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-paste fa-2x"></i>
+                </button>
+                <button id="plus" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-plus fa-2x"></i>
+                </button>
+                <button id="delete" type="button" class="btn btn-block btn-outline-secondary">
+                        <i class="fas fa-times fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav id='status-bar' class="navbar navbar-expand-lg fixed-bottom">
+        <div class="navbar-collapse collapse">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"></ol>
+            </nav>
+        </div>
+    </nav>
+    <script>
+        window.$ = window.jQuery = require('../node_modules/jquery');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link href="./assets/bootstrap-toggle.css" rel="stylesheet">
+    <script src="./assets/bootstrap-toggle.js"></script>
+
+    <script>
+        require('./renderer.js')
+    </script>
+</body>
+
+</html>

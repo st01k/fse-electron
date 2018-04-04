@@ -1,0 +1,125 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #6c757d;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ------------------------------------------------------------------ top bar */
+
+#top-navbar {
+    background-color: #121212;
+}
+
+#top-navbar a {
+    text-decoration: none;
+    color: #85bcfa;
+}
+
+#top-navbar a:hover {
+    color: whitesmoke;
+}
+
+#top-navbar .toggle {
+    margin-left: 20px;
+}
+
+#top-navbar .btn-primary {
+    background-color: #5798e2;
+}
+
+
+/* ------------------------------------------------------------------ toolbar */
+
+#toolbar {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    height: 100%;
+    background-color: #121212;
+    padding: 85px 25px;
+}
+
+#btn-wrapper {
+    padding-top: 20px;
+}
+
+
+/* ------------------------------------------------------------------ content */
+
+#wrapper {
+    height: 100%;
+}
+
+#content-section {
+    position: relative;
+    padding: 80px 25px;
+    min-height: 100%;
+}
+
+.gradient {
+    background: -webkit-linear-gradient(#2f2f2f, #181818);
+    background: -o-linear-gradient(#2f2f2f, #181818);
+    background: linear-gradient(#2f2f2f, #181818);
+}
+
+#show-items {
+    align-items: center;
+}
+
+.card {
+    width: 16rem;
+    height: 9rem;
+    background-color: transparent;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.card:hover {
+    color: #28fd9a;
+}
+
+
+/* --------------------------------------------------------------- status bar */
+
+#status-bar {
+    background-color: #121212;
+    height: 70px;
+    /* box-shadow: 1px 1px 1px 1px #b3b3b3; */
+}
+
+#status-bar a {
+    text-decoration: none;
+    color: #85bcfa;
+}
+
+#status-bar a:hover {
+    color: whitesmoke;
+}
+
+.btn-outline-secondary {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    padding: 0;
+}

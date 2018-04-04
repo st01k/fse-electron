@@ -1,0 +1,26 @@
+{
+    "name": "fse-electron",
+    "version": "1.0.0",
+    "description": "electron based file system explorer",
+    "main": "main.js",
+    "scripts": {
+        "dev": "electron .",
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": "",
+    "keywords": [
+        "Electron"
+    ],
+    "author": "Casey J. Murphy",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^1.8.4",
+        "electron-reload": "^1.2.2"
+    },
+    "dependencies": {
+        "electron": "^1.8.4",
+        "fs-extra": "^5.0.0",
+        "jquery": "^3.3.1"
+    }
+}
