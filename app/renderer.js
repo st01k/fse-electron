@@ -1,19 +1,46 @@
-const worker = require('./worker.js')
+const worker = require('./worker.js');
+const axios = require('axios');
+
+const uristring = 'http://127.0.0.1:3000';
 
 let dir = worker.dir_contents();
 rendBread(dir.tgtdir);
 rendContent(dir);
+rendCount();
 $('.hidden').hide();
+
+function rendCount() {
+    let folderCountEl = $('#foldercount');
+    let fileCountEl = $('#filecount');
+    
+    axios.get(uristring + '/get/folder')
+        .then(function (response) {
+            folderCountEl.text(response.data.value);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    axios.get(uristring + '/get/file')
+        .then(function (response) {
+            fileCountEl.text(response.data.value);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 function rendBread(dir) {
     let bc = $('.breadcrumb');
     let splitpath = dir.split('/');
     bc.attr('id', dir);
     bc.empty();
+    let s = '/'
     for (let [index, item] of splitpath.entries()) {
+        s += item + '/';
         let l = $('<li/>', { class: 'breadcrumb-item' })
         if (index < splitpath.length - 1) {
-            a = $('<a/>', { href: '#', text: item })
+            a = $('<a/>', { id: s, href: '#', class: 'bread', text: item })
             l.append(a);
         } else {
             l.text(item);
@@ -59,21 +86,53 @@ function rendContent(dir) {
     };
 
     attachEvents();
+
+    let hiddenOn = $('#toggle-hidden').prop('checked');
+    if (hiddenOn) { $('.hidden').show(); }
+    else { $('.hidden').hide(); }
 }
 
 function attachEvents() {
-    $('.folder').click((event) => {
-        let id = event.currentTarget.id;
+    $('.folder').click((e) => {
+        let id = e.currentTarget.id;
         worker.log('entering ' + id);
         dir = worker.dir_contents(id);
         rendBread(dir.tgtdir);
         rendContent(dir);
+
+        let folderCountEl = $('#foldercount');
+        let val = parseInt(folderCountEl.text())
+        axios.get(uristring + '/set/folder/' + (val + 1))
+            .then(function (response) {
+                rendCount();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     });
 
     $('.file').click((e) => {
         let id = e.currentTarget.id;
         worker.log('opening ' + id);
         worker.open_file(id);
+
+        let fileCountEl = $('#filecount');
+        let val = parseInt(fileCountEl.text())
+        axios.get(uristring + '/set/file/' + (val + 1))
+            .then(function (response) {
+                rendCount();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
+
+    $('.bread').click((e) => {
+        let id = e.currentTarget.id;
+        worker.log('entering ' + id);
+        dir = worker.dir_contents(id);
+        rendBread(dir.tgtdir);
+        rendContent(dir);
     });
 }
 
@@ -87,6 +146,7 @@ $('#home').click((e) => {
     dir = worker.dir_contents();
     rendContent(dir);
     rendBread(dir.tgtdir);
+    // $('.hidden').hide();
 });
 
 $('#up').click((e) => {
@@ -125,6 +185,29 @@ $('#delete').click((e) => {
     worker.log('delete clicked');
 });
 
+$('#resetcount').click((e) => {
+    worker.log('reset clicked');
+
+    let folderCountEl = $('#foldercount');
+    let fileCountEl = $('#filecount');
+
+    axios.get(uristring + '/set/folder/0')
+      .then(function (response) {
+        rendCount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios.get(uristring + '/set/file/0')
+      .then(function (response) {
+        rendCount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+})
+
 // --------------------------------------------------------------- debug button
 $('#toggle-debug').bootstrapToggle({
     on: 'Debug On',
@@ -143,6 +226,12 @@ $('#toggle-hidden').bootstrapToggle({
 });
 
 $('#toggle-hidden').change(() => {
-    console.log('hidden toggled');
-    $('.hidden').toggle();
+    let hiddenOn = $('#toggle-hidden').prop('checked');
+    worker.log('show hidden ' + hiddenOn);
+    if (hiddenOn) {
+        $('.hidden').show();
+    }
+    else {
+        $('.hidden').hide();
+    }
 });

@@ -40,27 +40,17 @@ module.exports = {
         });
         console.log(items);
         return items;
-
-        // fse.readdir(items.tgtdir, (err, _items) => {
-        //     if (err) throw err;
-        //     else {
-        //         for (let item of _items) {
-        //             let p = path.join(_folder, '/', item)
-        //             let isdir = fse.statSync(p).isDirectory();
-        //             if (isdir) {
-        //                 items.folders.push(item);
-        //             } else {
-        //                 items.files.push(item);
-        //             }
-        //         }
-        //     }
-        // });
-
-        // if (items.tgtdir != '/') {
-        //     items.folders.push('..');
-        // }
     },
     open_file: (_file) => {
         shell.openItem(_file);
+    },
+    create_file: (_file) => {
+        fse.createFile(_file)
+            .then((res) => {
+                console.log(_file + ' created');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 }

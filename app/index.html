@@ -24,10 +24,13 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="http://127.0.0.1:3000/about" class="nav-link" target="_blank">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Docs</a>
+                    <a href="http://127.0.0.1:3000/docs" class="nav-link" target="_blank">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://127.0.0.1:3000/test" class="nav-link" target="_blank">Test</a>
                 </li>
             </ul>
             <input type="checkbox" id="toggle-hidden" data-onstyle="success">
@@ -84,6 +87,25 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb"></ol>
             </nav>
+        </div>
+        <div class="nav navbar-nav mr-auto">
+            <ul id="counter" class="navbar-nav">
+                <li class="count">
+                    <p>Folder</p>
+                </li>
+                <li class="count">
+                    <p id="foldercount" class="number"></p>
+                </li>
+                <li class="count">
+                    <p>File</p>
+                </li>
+                <li class="count">
+                    <p id="filecount" class="number"></p>
+                </li>
+                <li id="resetcount">
+                    <button id="resetcount" class="btn btn-primary btn-sm">Reset</button>
+                </li>
+            </ul>
         </div>
     </nav>
     <script>

@@ -5,6 +5,9 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+let server = require('./api/server');
+server.start();
+
 // allow hot reload of electron window
 require('electron-reload')(__dirname);
 
