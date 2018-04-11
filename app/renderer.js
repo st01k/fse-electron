@@ -7,6 +7,7 @@ let dir = worker.dir_contents();
 rendBread(dir.tgtdir);
 rendContent(dir);
 rendCount();
+rendToolbar(dir);
 $('.hidden').hide();
 
 function rendCount() {
@@ -92,6 +93,18 @@ function rendContent(dir) {
     else { $('.hidden').hide(); }
 }
 
+function rendToolbar(d) {
+    let upOne = removeLastDir(d.tgtdir);
+    console.log(upOne);
+    $('#up').attr('id', upOne);
+}
+
+function removeLastDir(url) {
+    var arr = url.split('/');
+    arr.pop();
+    return( arr.join('/') );
+}
+
 function attachEvents() {
     $('.folder').click((e) => {
         let id = e.currentTarget.id;
@@ -99,6 +112,7 @@ function attachEvents() {
         dir = worker.dir_contents(id);
         rendBread(dir.tgtdir);
         rendContent(dir);
+        rendToolbar(dir);
 
         let folderCountEl = $('#foldercount');
         let val = parseInt(folderCountEl.text())
@@ -128,11 +142,23 @@ function attachEvents() {
     });
 
     $('.bread').click((e) => {
+        worker.log('breadcrumb clicked');
         let id = e.currentTarget.id;
         worker.log('entering ' + id);
         dir = worker.dir_contents(id);
         rendBread(dir.tgtdir);
         rendContent(dir);
+        rendToolbar(dir);
+    });
+
+    $('#up').click((e) => {
+        worker.log('up clicked');
+        let id = e.currentTarget.id;
+        worker.log('entering ' + id);
+        dir = worker.dir_contents(id);
+        rendBread(dir.tgtdir);
+        rendContent(dir);
+        rendToolbar();
     });
 }
 
@@ -146,12 +172,10 @@ $('#home').click((e) => {
     dir = worker.dir_contents();
     rendContent(dir);
     rendBread(dir.tgtdir);
-    // $('.hidden').hide();
+    rendToolbar(dir);
 });
 
-$('#up').click((e) => {
-    worker.log('up clicked');
-});
+
 
 $('#refresh').click((e) => {
     worker.log('refresh clicked');

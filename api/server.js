@@ -19,6 +19,14 @@ module. exports = {
 
         // motd
 
+        server.get('/about', (req, res) => {
+            res.send('About Page');
+        })
+
+        server.get('/docs', (req, res) => {
+            res.send('Docs Page');
+        })
+
         server.get('/test', (req, res) => {
             redis.get('test').then(function(result) {
                 res.json({
