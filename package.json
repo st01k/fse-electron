@@ -21,7 +21,7 @@
     "dependencies": {
         "axios": "^0.18.0",
         "body-parser": "^1.18.2",
-        "electron": "^1.8.4",
+        "electron": "^2.0.8",
         "express": "^4.16.3",
         "fs-extra": "^5.0.0",
         "ioredis": "^3.2.2",
