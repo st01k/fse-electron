@@ -15,7 +15,6 @@
     "author": "Casey J. Murphy",
     "license": "ISC",
     "devDependencies": {
-        "electron": "^1.8.4",
         "electron-reload": "^1.2.2"
     },
     "dependencies": {
@@ -26,6 +25,6 @@
         "fs-extra": "^5.0.0",
         "ioredis": "^3.2.2",
         "jquery": "^3.3.1",
-        "morgan": "^1.9.0"
+        "morgan": "^1.9.1"
     }
 }
